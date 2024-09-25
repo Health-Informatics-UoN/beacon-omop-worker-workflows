@@ -6,10 +6,12 @@ label: beacon-workflow
 inputs:
     filters:
         type: string?
-    snomed_code:
+    vocabulary:
+        type: string
+    strata:
         type: string?
-    output_file:
-        type: string?
+    output_name:
+        type: string
 
 outputs:
     output_file:
@@ -29,6 +31,7 @@ steps:
     beacon-survival:
         run: ./beacon-omop-worker-survival.cwl
         in:
-            snomed_code: snomed_code
-            output_file: output_file
+            vocabulary: vocabulary
+            strata: strata
+            output_name: output_name
         out: [output_file]
