@@ -11,19 +11,25 @@ baseCommand: [beacon-omop-worker]
 arguments: ["survival"]
 
 inputs:
-    snomed_code:
-        type: string?
+    vocabulary:
+        type: string
+        inputBinding:
+            position: 1
+            prefix: -v
+    output_name:
+        type: string
         inputBinding:
             position: 2
-            prefix: -s
-    output_file:
+            prefix: -o
+    strata:
         type: string?
         inputBinding:
             position: 3
-            prefix: -o
+            prefix: -s
+
 
 outputs:
     output_file:
         type: File
         outputBinding:
-            glob: "output.png"
+            glob: "$(inputs.output_name)"
